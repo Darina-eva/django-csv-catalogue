@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Телефон{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Телефон</h1>
+        </div>
+        <div class="content">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ phone.image }}" class="card-img-top" alt="{{ phone.name }}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">
+                            <a href="{% url 'phone_detail' slug=phone.slug %}">
+                                {{ phone.name }}
+                            </a>
+                        </h5>
+
+                        <p class="card-text fw-bold">
+                            {{ phone.price }}
+                        </p>
+
+                        <div class="mt-2">
+                            {% if phone.lte_exists %}
+                                <span class="badge bg-success">📶 LTE</span>
+                            {% else %}
+                                <span class="badge bg-light text-muted border">🚫 No LTE</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
